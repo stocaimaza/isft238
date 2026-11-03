@@ -13,13 +13,27 @@ a{color:inherit;text-underline-offset:4px}
 a:hover{text-decoration:underline}
 </style>
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
+<style>
+.site-nav a{text-decoration:none}
+.site-nav a:hover,.site-nav a:focus-visible{text-decoration:underline}
+.menu-toggle{display:none;width:48px;height:48px;align-items:center;justify-content:center;background:none;border:1px solid #17375E;color:#17375E;cursor:pointer;padding:0}
+@media (max-width:767px){
+.menu-toggle{display:flex}
+.site-header{flex-wrap:nowrap!important;position:relative}
+.site-nav{display:none!important;position:absolute;top:100%;left:0;right:0;z-index:20;flex-direction:column;gap:0!important;background:#FFFFFF;border-bottom:1px solid #CFD6DD;padding:8px clamp(16px,5vw,72px)}
+.site-nav.is-open{display:flex!important}
+.site-nav a{display:flex;align-items:center;min-height:48px;padding:0!important;border-top:1px solid #E6EAEE}
+.site-nav a:first-child{border-top:0}
+}
+</style>
 </head>
 <body>
 <div style="font-family: 'Source Sans 3', Arial, sans-serif; color: #1B2733; background: #FFFFFF; font-size: 18px; line-height: 1.55">
 
-<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 40px; padding: 20px max(clamp(16px, 5vw, 72px), calc((100% - 1296px) / 2)); border-bottom: 1px solid #CFD6DD">
+<header class="site-header" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 40px; padding: 20px max(clamp(16px, 5vw, 72px), calc((100% - 1296px) / 2)); border-bottom: 1px solid #CFD6DD">
 <a href="/" style="display: flex; flex-direction: column; text-decoration: none"><span style="font-family: 'Libre Franklin', Arial, sans-serif; font-weight: 800; font-size: 26px; line-height: 1.2; color: #17375E">ISFT 238</span><span style="font-size: 15px; color: #4B5866">Instituto Superior de Formación Técnica</span></a>
-<nav aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 4px 32px">
+<button type="button" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></button>
+<nav id="menu-principal" class="site-nav" aria-label="Principal" style="display: flex; flex-wrap: wrap; gap: 4px 32px">
 <a href="#carreras" style="padding: 10px 0">Carreras</a>
 <a href="/inscripcion" style="padding: 10px 0">Inscripción</a>
 <a href="#instituto" style="padding: 10px 0">El instituto</a>
@@ -107,5 +121,6 @@ a:hover{text-decoration:underline}
 <footer style="background: #17375E; color: #FFFFFF; padding: 24px max(clamp(16px, 5vw, 72px), calc((100% - 1296px) / 2)); font-size: 16px">Planes de estudio aprobados por la Dirección General de Cultura y Educación de la Provincia de Buenos Aires.</footer>
 </div>
 
+<script>(function(){var b=document.querySelector('.menu-toggle'),n=document.getElementById('menu-principal');if(!b||!n)return;function s(o){n.classList.toggle('is-open',o);b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}b.addEventListener('click',function(){s(!n.classList.contains('is-open'))});n.addEventListener('click',function(e){if(e.target.tagName==='A')s(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)})})();</script>
 </body>
 </html>
